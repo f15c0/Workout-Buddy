@@ -5,12 +5,14 @@ import useWorkoutsContext from '../hooks/useWorkoutsContext';
 
 
 const Home = () => {
+
     
-   const {workouts, dispatch}=useWorkoutsContext();
+
+   const {workouts, dispatch, API_BASE_URL}=useWorkoutsContext();
 
     useEffect(() => {
       const fetchWorkout = async ()=>{
-            const response= await fetch("/api/workouts/");
+            const response= await fetch(`${API_BASE_URL}/workouts`);
             const json= await response.json();
 
             if (response.ok) {
@@ -18,7 +20,7 @@ const Home = () => {
             }
        }
       fetchWorkout();
-    }, [dispatch])
+    }, [dispatch, API_BASE_URL])
 
     return ( 
         <div className="home">

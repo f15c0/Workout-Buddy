@@ -3,7 +3,7 @@ import useWorkoutsContext from "../hooks/useWorkoutsContext";
 
 
 const WorkoutForm = () => {
-    const {dispatch}=useWorkoutsContext();
+    const {dispatch, API_BASE_URL}=useWorkoutsContext();
 
     const [inputs, setInputs]=useState(()=>({title:"", load:"", reps:""}));
     const [error, setError]=useState(null);
@@ -20,7 +20,7 @@ const WorkoutForm = () => {
              //const {title, load, reps}=inputs;
         const workout = inputs;
            //console.log(JSON.stringify(workout))
-        const response = await fetch('/api/workouts', {
+        const response = await fetch(`${API_BASE_URL}/workouts`, {
             method:'POST',
             body: JSON.stringify(workout),
             headers:{

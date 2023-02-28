@@ -28,8 +28,11 @@ const WorkoutContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(workoutsReducer, {
     workouts: null,
   });
+
+  // Define your base URL
+const API_BASE_URL = "https://workout-buddys.herokuapp.com/api";
   return (
-    <workoutsContext.Provider value={{ ...state, dispatch }}>
+    <workoutsContext.Provider value={{ ...state, dispatch, API_BASE_URL}}>
       {children}
     </workoutsContext.Provider>
   );
